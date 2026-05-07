@@ -11,8 +11,7 @@ export default function Cart({
   const [pagamento, setPagamento] = useState("PIX");
 
   const total = carrinho.reduce(
-    (acc, item) =>
-      acc + item.preco * item.quantidade,
+    (acc, item) => acc + item.preco * item.quantidade,
     0
   );
 
@@ -49,15 +48,15 @@ export default function Cart({
     }
 
     if (!endereco) {
-      alert("Informe e pesquise o CEP antes de finalizar.");
+      alert("Pesquise o CEP antes de finalizar.");
       return;
     }
 
     alert(
-      `Compra finalizada!\n\nTotal: R$ ${total.toFixed(
-        2
-      )}\nPagamento: ${pagamento}`
+      `Compra finalizada com sucesso!\n\nPagamento: ${pagamento}\nTotal: R$ ${total.toFixed(2)}`
     );
+
+    fecharCarrinho();
   }
 
   return (
@@ -93,9 +92,7 @@ export default function Cart({
                 </strong>
 
                 <button
-                  onClick={() =>
-                    removerDoCarrinho(item.firebaseId)
-                  }
+                  onClick={() => removerDoCarrinho(item.firebaseId)}
                 >
                   Remover
                 </button>
@@ -111,9 +108,7 @@ export default function Cart({
                 type="text"
                 placeholder="Digite seu CEP"
                 value={cep}
-                onChange={(e) =>
-                  setCep(e.target.value)
-                }
+                onChange={(e) => setCep(e.target.value)}
               />
 
               <button onClick={buscarCep}>
@@ -136,14 +131,12 @@ export default function Cart({
 
             <select
               value={pagamento}
-              onChange={(e) =>
-                setPagamento(e.target.value)
-              }
+              onChange={(e) => setPagamento(e.target.value)}
             >
-              <option>PIX</option>
-              <option>Cartão de Crédito</option>
-              <option>Cartão de Débito</option>
-              <option>Dinheiro na entrega</option>
+              <option value="PIX">PIX</option>
+              <option value="Cartão de Crédito">Cartão de Crédito</option>
+              <option value="Cartão de Débito">Cartão de Débito</option>
+              <option value="Dinheiro na entrega">Dinheiro na entrega</option>
             </select>
           </div>
 
