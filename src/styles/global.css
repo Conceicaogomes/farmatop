@@ -28,10 +28,6 @@ button:hover {
 .header {
   width: 100%;
   padding: 16px 6%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 18px;
   background: white;
   box-shadow: 0 2px 15px rgba(0,0,0,0.05);
   position: sticky;
@@ -39,8 +35,9 @@ button:hover {
   z-index: 100;
 }
 
-.header-left {
+.header-top {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 14px;
 }
@@ -51,8 +48,10 @@ button:hover {
 }
 
 nav {
+  margin-top: 18px;
   display: flex;
-  gap: 18px;
+  justify-content: center;
+  gap: 26px;
 }
 
 nav a {
@@ -70,9 +69,9 @@ nav a:hover {
 /* CATEGORY MENU */
 
 .category-menu-btn {
-  width: 42px;
-  height: 42px;
-  min-width: 42px;
+  width: 43px;
+  height: 43px;
+  min-width: 43px;
   border: none;
   border-radius: 50%;
   background: #16a34a;
@@ -86,7 +85,7 @@ nav a:hover {
 .category-menu {
   position: absolute;
   top: 78px;
-  left: 6%;
+  right: 6%;
   background: white;
   padding: 18px;
   border-radius: 18px;
@@ -94,6 +93,7 @@ nav a:hover {
   display: grid;
   gap: 10px;
   z-index: 300;
+  min-width: 260px;
 }
 
 .category-menu button {
@@ -154,12 +154,22 @@ nav a:hover {
 
 /* USER */
 
+.menu-login-area {
+  margin-top: 10px;
+  padding-top: 12px;
+  border-top: 1px solid #e2e8f0;
+  display: grid;
+  gap: 10px;
+}
+
 .user-area {
   display: flex;
+  width: 100%;
 }
 
 .login-btn {
-  padding: 12px 16px;
+  width: 100%;
+  padding: 11px 14px;
   border: none;
   border-radius: 12px;
   background: #16a34a;
@@ -167,9 +177,11 @@ nav a:hover {
   font-weight: bold;
   font-size: 13px;
   white-space: nowrap;
+  text-align: center;
 }
 
 .user-info {
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -198,10 +210,12 @@ nav a:hover {
 
 .admin-login-small {
   display: flex;
+  width: 100%;
 }
 
 .admin-small-btn {
-  padding: 12px 16px;
+  width: 100%;
+  padding: 11px 14px;
   border: none;
   border-radius: 12px;
   background: #2563eb;
@@ -210,11 +224,12 @@ nav a:hover {
   font-size: 13px;
   white-space: nowrap;
   box-shadow: 0 4px 12px rgba(37,99,235,0.35);
+  text-align: center;
 }
 
 .admin-mini-form {
-  display: flex;
-  align-items: center;
+  width: 100%;
+  display: grid;
   gap: 8px;
   background: white;
   padding: 10px;
@@ -224,11 +239,11 @@ nav a:hover {
 }
 
 .close-admin-login {
-  width: 32px;
+  width: 100%;
   height: 32px;
   padding: 0;
   border: none;
-  border-radius: 50%;
+  border-radius: 10px;
   background: #ef4444;
   color: white;
   display: flex;
@@ -237,14 +252,15 @@ nav a:hover {
 }
 
 .admin-mini-form input {
+  width: 100%;
   padding: 10px 12px;
   border-radius: 10px;
   border: 1px solid #ddd;
   outline: none;
-  max-width: 145px;
 }
 
 .admin-mini-form button[type="submit"] {
+  width: 100%;
   padding: 10px 14px;
   border: none;
   border-radius: 10px;
@@ -813,6 +829,10 @@ nav a:hover {
   color: white;
 }
 
+.dark .menu-login-area {
+  border-color: #374151;
+}
+
 .dark .search-container input,
 .dark .admin input,
 .dark .admin-mini-form input,
@@ -843,123 +863,48 @@ nav a:hover {
 
 /* RESPONSIVO */
 
-@media (max-width: 1100px) {
-
-  .header {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .header-left {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  nav {
-    order: 3;
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .header-actions {
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-}
-
 @media (max-width: 768px) {
-
   .header {
-    padding: 14px 5%;
-    gap: 12px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
+    padding: 18px 5%;
   }
 
-  .header-left {
-    width: auto;
-    justify-content: flex-start;
+  .header-top {
     gap: 10px;
   }
 
   .header h1 {
-    font-size: 30px;
-  }
-
-  .category-menu-btn {
-    width: 46px;
-    height: 42px;
-    min-width: 46px;
-    font-size: 17px;
+    font-size: 29px;
   }
 
   .header-actions {
-    width: auto;
-    justify-content: flex-end;
-    align-items: center;
-    flex-wrap: wrap;
     gap: 8px;
   }
 
   .theme-btn,
   .cart-button,
   .favorite-header-btn,
-  .accessibility-btn {
-    width: 38px;
-    height: 38px;
+  .accessibility-btn,
+  .category-menu-btn {
+    width: 39px;
+    height: 39px;
+    min-width: 39px;
     font-size: 15px;
   }
 
-  .login-btn,
-  .admin-small-btn {
-    width: auto;
-    max-width: none;
-    padding: 10px 12px;
-    font-size: 12px;
-    white-space: nowrap;
-  }
-
-  .user-area,
-  .admin-login-small {
-    width: auto;
-  }
-
   nav {
-    grid-column: 1 / -1;
-    width: 100%;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 18px;
-    margin-top: 5px;
+    margin-top: 24px;
+    gap: 20px;
   }
 
   nav a {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .category-menu {
-    top: 70px;
-    left: 5%;
-    width: 230px;
-    right: auto;
-  }
-
-  .admin-mini-form {
-    grid-column: 1 / -1;
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .admin-mini-form input,
-  .admin-mini-form button,
-  .close-admin-login {
-    width: 100%;
-    max-width: none;
+    top: 78px;
+    right: 5%;
+    left: auto;
+    width: 250px;
   }
 
   .hero {
@@ -1053,29 +998,33 @@ nav a:hover {
   .accessibility-mode .hero h2 {
     font-size: 40px;
   }
-
 }
 
 @media (max-width: 420px) {
-
-  .header {
-    grid-template-columns: 1fr;
-  }
-
-  .header-left {
-    justify-content: space-between;
+  .header h1 {
+    font-size: 26px;
   }
 
   .header-actions {
-    justify-content: center;
+    gap: 7px;
   }
 
-  .header h1 {
-    font-size: 28px;
+  .theme-btn,
+  .cart-button,
+  .favorite-header-btn,
+  .accessibility-btn,
+  .category-menu-btn {
+    width: 37px;
+    height: 37px;
+    min-width: 37px;
   }
 
   nav {
-    gap: 14px;
+    gap: 16px;
+  }
+
+  nav a {
+    font-size: 13px;
   }
 
   .hero h2 {
@@ -1085,5 +1034,4 @@ nav a:hover {
   .product-card h3 {
     font-size: 22px;
   }
-
 }
