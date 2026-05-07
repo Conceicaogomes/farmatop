@@ -37,13 +37,6 @@ O projeto foi criado para praticar:
 ✅ Toasts/notificações  
 ✅ Finalização via WhatsApp  
 ✅ Deploy online
-
----
-
-# 📷 Preview
-
-<img width="100%" src="LINK_DA_IMAGEM_AQUI" />
-
 ---
 
 # 🌐 Projeto Online
