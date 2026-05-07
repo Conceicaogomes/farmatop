@@ -10,64 +10,36 @@ import User from "../components/User";
 import Admin from "./Admin";
 import AdminLogin from "../components/AdminLogin";
 
+import { listarProdutos } from "../services/productService";
+
 export default function Home() {
 
-  const produtosIniciais = [
-    {
-      id: 1,
-      nome: "Dipirona",
-      preco: 12.9,
-      imagem:
-        "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=800",
-    },
+  const [produtos, setProdutos] =
+    useState([]);
 
-    {
-      id: 2,
-      nome: "Vitamina C",
-      preco: 29.9,
-      imagem:
-        "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?q=80&w=800",
-    },
+  const [darkMode, setDarkMode] =
+    useState(
 
-    {
-      id: 3,
-      nome: "Dorflex",
-      preco: 15.5,
-      imagem:
-        "https://images.unsplash.com/photo-1626716493137-b67fe9501e76?q=80&w=800",
-    },
+      JSON.parse(
+        localStorage.getItem(
+          "darkMode"
+        )
+      ) || false
 
-    {
-      id: 4,
-      nome: "Ibuprofeno",
-      preco: 18.9,
-      imagem:
-        "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?q=80&w=800",
-    },
-  ];
-
-  const [produtos, setProdutos] = useState(
-    JSON.parse(
-      localStorage.getItem("produtos")
-    ) || produtosIniciais
-  );
-
-  const [darkMode, setDarkMode] = useState(
-    JSON.parse(
-      localStorage.getItem("darkMode")
-    ) || false
-  );
+    );
 
   const [busca, setBusca] =
     useState("");
 
   const [favoritos, setFavoritos] =
     useState(
+
       JSON.parse(
         localStorage.getItem(
           "favoritos"
         )
       ) || []
+
     );
 
   const [mostrarFavoritos,
@@ -80,11 +52,13 @@ export default function Home() {
 
   const [carrinho, setCarrinho] =
     useState(
+
       JSON.parse(
         localStorage.getItem(
           "carrinho"
         )
       ) || []
+
     );
 
   const [toast, setToast] =
@@ -96,12 +70,22 @@ export default function Home() {
   const [adminLogado,
     setAdminLogado] =
       useState(
+
         JSON.parse(
           localStorage.getItem(
             "adminLogado"
           )
         ) || false
+
       );
+
+  /* FIREBASE */
+
+  useEffect(() => {
+
+    listarProdutos(setProdutos);
+
+  }, []);
 
   /* STORAGE */
 
@@ -132,15 +116,6 @@ export default function Home() {
 
   }, [darkMode]);
 
-  useEffect(() => {
-
-    localStorage.setItem(
-      "produtos",
-      JSON.stringify(produtos)
-    );
-
-  }, [produtos]);
-
   /* TOAST */
 
   function mostrarToast(mensagem) {
@@ -161,15 +136,21 @@ export default function Home() {
 
     const existe =
       favoritos.some(
-        (item) => item.id === produto.id
+        (item) =>
+          item.firebaseId ===
+          produto.firebaseId
       );
 
     if (existe) {
 
       setFavoritos(
+
         favoritos.filter(
-          (item) => item.id !== produto.id
+          (item) =>
+            item.firebaseId !==
+            produto.firebaseId
         )
+
       );
 
       mostrarToast(
@@ -197,15 +178,19 @@ export default function Home() {
 
     const produtoExistente =
       carrinho.find(
-        (item) => item.id === produto.id
+        (item) =>
+          item.firebaseId ===
+          produto.firebaseId
       );
 
     if (produtoExistente) {
 
       setCarrinho(
+
         carrinho.map((item) =>
 
-          item.id === produto.id
+          item.firebaseId ===
+          produto.firebaseId
 
             ? {
                 ...item,
@@ -216,11 +201,13 @@ export default function Home() {
             : item
 
         )
+
       );
 
     } else {
 
       setCarrinho([
+
         ...carrinho,
 
         {
@@ -245,7 +232,7 @@ export default function Home() {
       carrinho
         .map((item) =>
 
-          item.id === id
+          item.firebaseId === id
 
             ? {
                 ...item,
@@ -258,7 +245,8 @@ export default function Home() {
         )
 
         .filter(
-          (item) => item.quantidade > 0
+          (item) =>
+            item.quantidade > 0
         )
 
     );
@@ -355,7 +343,6 @@ export default function Home() {
 
           <Admin
             produtos={produtos}
-            setProdutos={setProdutos}
           />
 
         </>

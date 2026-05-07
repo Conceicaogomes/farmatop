@@ -52,20 +52,12 @@ nav a {
   text-decoration: none;
   color: #1e293b;
   font-weight: bold;
+  transition: 0.3s;
 }
 
-.menu-btn {
-  display: none;
-  width: 45px;
-  height: 45px;
-  border: none;
-  border-radius: 50%;
-  background: #16a34a;
-  color: white;
-  font-size: 18px;
+nav a:hover {
+  color: #16a34a;
 }
-
-/* HEADER ACTIONS */
 
 .header-actions {
   display: flex;
@@ -156,7 +148,7 @@ nav a {
   color: white;
 }
 
-/* ADMIN LOGIN SMALL */
+/* ADMIN LOGIN */
 
 .admin-login-small {
   display: flex;
@@ -264,6 +256,49 @@ nav a {
   color: white;
   font-weight: bold;
   font-size: 16px;
+}
+
+/* ADMIN PRODUCTS */
+
+.admin-products {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 25px;
+}
+
+.admin-product-card {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.admin-product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 15px;
+}
+
+.admin-product-card h3 {
+  margin-bottom: 10px;
+}
+
+.admin-product-card p {
+  margin-bottom: 15px;
+  color: #16a34a;
+  font-weight: bold;
+}
+
+.admin-product-card div {
+  display: flex;
+  gap: 10px;
+}
+
+.delete-btn {
+  background: #ef4444 !important;
 }
 
 /* HERO */
@@ -409,6 +444,68 @@ nav a {
   font-weight: bold;
 }
 
+/* TRABALHE CONOSCO */
+
+.trabalhe-page {
+  min-height: 100vh;
+  padding: 100px 8%;
+  background: #ecfdf5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trabalhe-container {
+  width: 100%;
+  max-width: 650px;
+  background: white;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.trabalhe-container h1 {
+  text-align: center;
+  font-size: 42px;
+  color: #16a34a;
+  margin-bottom: 10px;
+}
+
+.trabalhe-container p {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #475569;
+}
+
+.trabalhe-container form {
+  display: grid;
+  gap: 15px;
+}
+
+.trabalhe-container input,
+.trabalhe-container textarea {
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+}
+
+.trabalhe-container textarea {
+  height: 140px;
+  resize: none;
+}
+
+.trabalhe-container button {
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  background: #16a34a;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+
 /* OVERLAY */
 
 .overlay {
@@ -467,47 +564,22 @@ nav a {
   color: white;
 }
 
-.payment {
-  margin-top: 40px;
-}
-
-.payment h3 {
-  margin-bottom: 15px;
-}
-
-.payment select {
-  width: 100%;
-  padding: 14px;
-  border-radius: 12px;
-  border: 1px solid #ccc;
-}
-
-.total {
-  margin-top: 35px;
-  color: #16a34a;
-}
-
-.finish-btn {
-  margin-top: 25px;
-  width: 100%;
-  padding: 16px;
-  border: none;
-  border-radius: 14px;
-  background: #16a34a;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-}
-
 /* FOOTER */
 
 .footer {
   background: #0f172a;
   color: white;
   padding: 70px 8% 30px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-  gap: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 120px;
+}
+
+.footer-box {
+  min-width: 240px;
+  max-width: 280px;
 }
 
 .footer-box h2 {
@@ -524,46 +596,15 @@ nav a {
 .footer-box p {
   margin-bottom: 12px;
   line-height: 1.6;
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
 
 .footer-copy {
-  grid-column: 1 / -1;
+  width: 100%;
   text-align: center;
   border-top: 1px solid #334155;
   padding-top: 25px;
-  margin-top: 20px;
+  margin-top: 40px;
   color: #cbd5e1;
-}
-
-/* TOAST */
-
-.toast {
-  position: fixed;
-  top: 100px;
-  right: 30px;
-  background: #16a34a;
-  color: white;
-  padding: 16px 24px;
-  border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  font-weight: bold;
-  z-index: 2000;
-  animation: toastAnimation 0.3s ease;
-}
-
-@keyframes toastAnimation {
-  from {
-    opacity: 0;
-    transform: translateX(80px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
 }
 
 /* DARK MODE */
@@ -576,7 +617,9 @@ nav a {
 .dark .header,
 .dark .product-card,
 .dark .cart-sidebar,
-.dark .admin-mini-form {
+.dark .admin-mini-form,
+.dark .admin-product-card,
+.dark .trabalhe-container {
   background: #111827;
   color: white;
 }
@@ -586,15 +629,12 @@ nav a {
 }
 
 .dark .search-container input,
-.dark .payment select,
 .dark .admin input,
-.dark .admin-mini-form input {
+.dark .admin-mini-form input,
+.dark .trabalhe-container input,
+.dark .trabalhe-container textarea {
   background: #111827;
   color: white;
-  border-color: #374151;
-}
-
-.dark .cart-item {
   border-color: #374151;
 }
 
@@ -606,45 +646,43 @@ nav a {
   background: #111827;
 }
 
+.dark .trabalhe-page {
+  background: #0f172a;
+}
+
 /* RESPONSIVO */
 
 @media (max-width: 768px) {
-  .menu-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  nav {
-    position: absolute;
-    top: 90px;
-    left: 0;
-    width: 100%;
-    background: white;
-    flex-direction: column;
-    padding: 30px;
-    gap: 20px;
-    display: none;
-  }
-
-  .nav-active {
-    display: flex;
-  }
-
-  .dark nav {
-    background: #111827;
-  }
 
   .header {
-    gap: 12px;
+    flex-direction: column;
+    gap: 18px;
+    padding: 18px 5%;
   }
 
   .header h1 {
-    font-size: 26px;
+    font-size: 28px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  nav a {
+    font-size: 14px;
   }
 
   .header-actions {
     gap: 10px;
+  }
+
+  .theme-btn,
+  .cart-button,
+  .favorite-header-btn {
+    width: 42px;
+    height: 42px;
   }
 
   .top-logins {
@@ -660,10 +698,21 @@ nav a {
   .hero {
     text-align: center;
     justify-content: center;
+    padding: 0 5%;
   }
 
   .hero h2 {
     font-size: 42px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .products,
+  .admin,
+  .trabalhe-page {
+    padding: 60px 5%;
   }
 
   .products h2,
@@ -675,12 +724,6 @@ nav a {
     width: 100%;
   }
 
-  .toast {
-    left: 20px;
-    right: 20px;
-    text-align: center;
-  }
-
   .user-info {
     flex-direction: column;
   }
@@ -689,5 +732,22 @@ nav a {
     flex-direction: column;
     gap: 15px;
     text-align: center;
+  }
+
+  .footer {
+    gap: 50px;
+    text-align: center;
+  }
+
+  .footer-box p {
+    justify-content: center;
+  }
+
+  .trabalhe-container {
+    padding: 28px 20px;
+  }
+
+  .trabalhe-container h1 {
+    font-size: 32px;
   }
 }

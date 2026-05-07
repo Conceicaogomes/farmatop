@@ -1,11 +1,9 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import {
   FaMoon,
   FaSun,
   FaShoppingCart,
-  FaBars,
-  FaTimes,
   FaHeart
 } from "react-icons/fa";
 
@@ -17,23 +15,16 @@ export default function Header({
   abrirFavoritos,
   quantidadeFavoritos
 }) {
-  const [menuAberto, setMenuAberto] = useState(false);
-
   return (
     <header className="header">
       <h1>FarmaTop</h1>
 
-      <button
-        className="menu-btn"
-        onClick={() => setMenuAberto(!menuAberto)}
-      >
-        {menuAberto ? <FaTimes /> : <FaBars />}
-      </button>
-
-      <nav className={menuAberto ? "nav-active" : ""}>
-        <a href="">Início</a>
-        <a href="">Produtos</a>
-        <a href="">Contato</a>
+      <nav>
+        <Link to="/">Início</Link>
+        <Link to="/produtos">Produtos</Link>
+        <Link to="/trabalhe-conosco">
+          Trabalhe Conosco
+        </Link>
       </nav>
 
       <div className="header-actions">
@@ -42,7 +33,6 @@ export default function Header({
           onClick={abrirFavoritos}
         >
           <FaHeart />
-
           <span>{quantidadeFavoritos}</span>
         </button>
 
@@ -51,7 +41,6 @@ export default function Header({
           onClick={abrirCarrinho}
         >
           <FaShoppingCart />
-
           <span>{quantidadeCarrinho}</span>
         </button>
 
