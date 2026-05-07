@@ -37,12 +37,19 @@ O projeto foi criado para praticar:
 ✅ Toasts/notificações  
 ✅ Finalização via WhatsApp  
 ✅ Deploy online
+
+---
+
+# 📷 Preview
+
+<img width="100%" src="LINK_DA_IMAGEM_AQUI" />
+
 ---
 
 # 🌐 Projeto Online
 
-👉 LINK_DA_VERCEL_AQUI
-https://farmatop.vercel.app/
+👉 (https://farmatop.vercel.app/)
+
 ---
 
 # ⚙️ Como rodar o projeto
